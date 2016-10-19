@@ -1,10 +1,14 @@
+/**
+* Created by zhengwei on 16/10/14.
+* 默认设置
+*/
 const path = require('path');
 const glob = require('glob');
 
 const srcPath = path.join(__dirname, '/../src');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
-// load src/entries/*.js as entry automatically
+// 自动加载 src/entries/*.js 目录下的文件作为入口js
 const entryFiles = glob.sync(path.join(srcPath, '/entries/*.js'));
 const entriesObj = entryFiles.reduce((memo, file) => {
   const name = path.basename(file, '.js');
@@ -21,11 +25,11 @@ const htmlPluginOpt = {
     collapseWhitespace: false,
   },
 };
-// set default webpack plugins
+// 设置默认的 webpack 插件
 function getDefPlugins() {
   const plugins = [extractLess];
-  // set the html file by entry file's number
-  // one entry match one html
+  // 根据入口文件生成对应的html
+  // 一个入口文件对应一个html文件
   Object.keys(entriesObj).forEach((entryName) => {
     const conf = Object.assign(htmlPluginOpt, {
       filename: `${entryName}.html`,
@@ -39,7 +43,7 @@ function getDefPlugins() {
 function getDefEntries() {
   return entriesObj;
 }
-// set the default modules object for webpack
+// 配置默认的modules
 function getDefModules() {
   return {
     preLoaders: [
@@ -55,7 +59,7 @@ function getDefModules() {
         exclude: /node_modules/,
         loader: 'babel',
       },
-      { test: /\.less$/, loader: extractLess.extract('style', '!css?modules&importLoaders=1&localIdentName=[name]_[local]___[hash:base64:5]!postcss!less') },
+      { test: /\.less$/, loader: extractLess.extract('style', '!css?modules&importLoaders=1&localIdentName=[name]_[local]__[hash:base64:5]!postcss!less') },
       { test: /\.css$/, loader: extractLess.extract('style', '!css') },
       { test: /\.(png|jpg|gif)$/, loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]' },
     ],

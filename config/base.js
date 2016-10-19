@@ -1,4 +1,7 @@
-// webpack 基础配置
+/**
+* Created by zhengwei on 16/10/14.
+* webpack基础配置
+*/
 const path = require('path');
 
 const buildPath = path.join(__dirname, '/../dist');

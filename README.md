@@ -1,6 +1,6 @@
 # 前端开发文档
 
-## 一，技术栈
+## 一，技术需求
 
 1. [react >15.x](https://facebook.github.io/react)	"Javascript库"
 2. [webpack](https://webpack.github.io/)	"模块加载及打包"

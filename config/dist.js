@@ -1,3 +1,7 @@
+/**
+* Created by zhengwei on 16/10/14.
+* 基于生产环境打包
+*/
 const webpack = require('webpack');
 const webpackBase = require('./base');
 
