@@ -15,6 +15,9 @@
     "node": true,
     "mocha": true
   },
+  "globals": {
+    "__DEV__": true
+  },
   "rules": {
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,

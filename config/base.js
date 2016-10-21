@@ -21,7 +21,7 @@ const base = {
   module: defaultSettings.getDefModules(),
   plugins: defaultSettings.getDefPlugins(),
   devServer: {
-    historyApiFallback: true,
+  // historyApiFallback: true,
     hot: true,
     port: defaultSettings.defPort,
     publicPath: defaultSettings.publicPath,

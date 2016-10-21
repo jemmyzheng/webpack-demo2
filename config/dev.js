@@ -5,7 +5,10 @@
 const webpack = require('webpack');
 const webpackBase = require('./base');
 const defaultSettings = require('./defaultOpt');
-
+// 设置magic globals(魔力变量)
+const definePlugin = new webpack.DefinePlugin({
+  __DEV__: (process.env.REACT_WEBPACK_ENV === 'dev' ? 1 : 0),
+});
 const sfg = Object.assign(webpackBase, {
   cache: true,
   devtool: 'eval-source-map',
@@ -20,6 +23,7 @@ sfg.plugins = (webpackBase.plugins || []).concat(
   // 配置热加载
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoErrorsPlugin()
+  new webpack.NoErrorsPlugin(),
+  definePlugin
 );
 module.exports = sfg;

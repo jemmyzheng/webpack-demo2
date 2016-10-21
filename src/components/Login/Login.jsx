@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Button, Form, Input } from 'antd';
+import { login } from '../../service/login';
 import styles from './Login.less';
 
 const createForm = Form.create;
@@ -38,6 +39,9 @@ class LoginFormBase extends Component {
       if (errors) {
         return;
       }
+      login().then(({ jsonResult }) => {
+        console.log(jsonResult);
+      });
     });
   }
   render() {
